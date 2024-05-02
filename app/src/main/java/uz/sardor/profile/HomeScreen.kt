@@ -29,6 +29,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import uz.sardor.profile.ui.theme.GreenColor
 import uz.sardor.profile.ui.theme.Zinc
 import uz.sardor.profile.ui.theme.poppinsFamily
 
@@ -218,22 +219,32 @@ fun MyContent() {
 
 
 
-Row(modifier = Modifier
-    .fillMaxWidth()
-    .padding(top = 370.dp, )){
-    Text(text = "Transactions History", color = Color.Black,fontWeight = FontWeight.Medium, fontFamily = poppinsFamily, fontSize = 16.sp)
-//    Text(text = "See all", color = Color.Black, fontWeight = FontWeight.Normal, fontFamily = poppinsFamily)
+    Column(modifier = Modifier
+        .fillMaxWidth()
+        .padding(top = 370.dp,)){
 
-    Column(){
-        LazyColumn(modifier = Modifier.padding(0.dp)) {
-            items(10) { index ->
-                TextItem(index)
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White)
+            .padding(start = 20.dp, end = 20.dp), horizontalArrangement = Arrangement.SpaceBetween){
+            Text(text = "Transactions History", color = Color.Black,fontWeight = FontWeight.Medium, fontFamily = poppinsFamily, fontSize = 16.sp)
+            Text(text = "See all", color = Color.Black, fontWeight = FontWeight.Normal, fontFamily = poppinsFamily)
+
+        }
+
+
+        Column(){
+            LazyColumn(modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White)
+                .padding(start = 20.dp, end = 20.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+                items(10) {
+                    TextItem()
+                }
             }
         }
+
     }
-
-
-}
 
 
 }
@@ -253,6 +264,40 @@ fun SurfaceWithBackgroundImagePreview() {
 }
 
 @Composable
-fun TextItem(index: Int) {
-    Text(text = "Salom $index")
+fun TextItem() {
+
+
+    Card(modifier = Modifier
+        .fillMaxWidth()
+        .padding(top = 10.dp)){
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White)
+            .padding(start = 10.dp, end = 10.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically){
+            Row(){
+                Image(
+                    painter = painterResource(id = R.drawable.ic_netflix),
+                    contentDescription = null
+                )
+                Column(modifier = Modifier.padding(start = 10.dp)){
+                    Text(text = "Upwork", color = Color.Black, fontSize = 15.sp, fontWeight = FontWeight.Normal, fontFamily = poppinsFamily)
+                    Text(text = "Today", color = Color.Black,fontSize = 12.sp, fontWeight = FontWeight.Normal, fontFamily = poppinsFamily)
+
+                }
+            }
+
+            Text(
+                modifier = Modifier.padding(start = 15.dp),
+                text = " + $548.00",
+                fontSize = 15.sp,
+                color = GreenColor,
+                fontFamily = poppinsFamily,
+                fontWeight = FontWeight.Medium
+            )
+
+
+        }
+    }
 }
+
+

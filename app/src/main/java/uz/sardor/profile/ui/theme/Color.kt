@@ -11,3 +11,5 @@ val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
 
 val Zinc = Color(0xFF2F7E79)
+
+val GreenColor = Color(0xFF25A969)
